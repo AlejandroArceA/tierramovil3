@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Sistema Planetario</TITLE>
+
+<STYLE TYPE="text/css">
+#sol {
+  position: absolute;
+  top:  230;
+  left: 250;
+}
+
+#planeta {
+  position: absolute;
+  top:  500;
+  left: 500;
+}
+
+#luna {
+  position: absolute;
+  top:  100;
+  left: 100;
+}
+</STYLE>
+
+
+</HEAD>
+<BODY BGCOLOR="#000000" BACKGROUND="stars.gif" >
+
+
+<!--<SPAN ID=sol><img src="imagenes/sol.gif"></SPAN> -->
+<SPAN ID=planeta><img src="imagenes/tierra.gif"></SPAN>
+<SPAN ID=luna><img src="imagenes/planeta.gif"></SPAN>
+
+
+<SCRIPT>
+  Xi     = 300;
+  Yi     = 200;
+  radiop = 190; 
+  radiol = 50;
+  inc    = Math.PI/130
+  ang = 0;
+
+  function mover() {
+        x_planeta = (radiop * Math.cos(ang)) + Xi;
+        y_planeta = (radiop * Math.sin(ang)) + Yi;
+
+        x_luna    = x_planeta + 16 + radiol*Math.cos(6*ang);
+        y_luna    = y_planeta + 16 + radiol*Math.sin(6*ang);
+
+        document.planeta.left = x_planeta;
+        document.planeta.top  = y_planeta;
+        document.luna.left    = x_luna;
+        document.luna.top     = y_luna;
+
+        ang+=inc;
+        if ( ang >= 2*Math.PI ) ang = 0;
+
+        setTimeout("mover()", 20);
+  }
+
+  setTimeout("mover()", 20);
+</script>
+
+</BODY>
+</HTML>
